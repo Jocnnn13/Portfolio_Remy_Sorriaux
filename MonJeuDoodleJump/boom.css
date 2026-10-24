@@ -1,0 +1,44 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #f0f0f0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.grid {
+    width: 800px; 
+    height: 700px;
+    background-color: #f0f0f0; 
+    position: relative;
+    overflow: hidden;
+}
+
+.doodler {
+    width: 90px;
+    height: auto;
+    position: absolute;
+}
+
+.platform {
+    width: 125px;
+    height: 15px;
+    background-color: #4CAF50; 
+    position: absolute;
+    border-radius: 2px;
+}
+
+#score-display {
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #1c1c1c;
+    z-index: 100;
+    text-align: center;
+    transform: none;
+    padding-top: 15px;
+}
