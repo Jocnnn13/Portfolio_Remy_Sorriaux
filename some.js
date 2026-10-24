@@ -431,7 +431,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return `https://player.vimeo.com/video/${m[1]}?${params}`;
   }
 
-  // transforme un lien Sketchfab en lien d'intégration
   function sketchfabEmbedUrl(url) {
     const m = url.match(
       /sketchfab\.com\/(?:3d-models\/(?:[^/?#]*-)?|models\/)([0-9a-f]{32})/i,
