@@ -234,8 +234,8 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 /* catégorie active */
 .container_loop.content-grid > div.active {
   opacity: 1;
-  border-bottom: 2px solid rgba(227, 224, 6, 0.949);
-  color: rgba(227, 224, 6, 0.949);
+  border-bottom: 2px solid #f0f0f0;
+  color: #f0f0f0;
   line-height: 0;
   font-style: italic;
 }
@@ -246,7 +246,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 }
 
 ::selection {
-  background: rgba(104, 6, 174, 0.9);
+  background: rgba(91, 233, 162, 0.9);
   mix-blend-mode: difference;  
   color: #f0f0f0;        
 }
