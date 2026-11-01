@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createDoodler() {
     grid.appendChild(doodler);
-    doodler.innerHTML = `<img src="../Élément/chien.svg" alt="chien" style="width:90px; height:auto;">`;
+    doodler.innerHTML = `<img src="graphique/chien.svg" alt="chien" style="width:90px; height:auto;">`;
     doodler.classList.add("doodler");
     doodlerLeftSpace = platforms[0] ? platforms[0].left : 370;
     doodler.style.left = doodlerLeftSpace + "px";
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
       visual.classList.add("platform");
       visual.style.background = "none";
       visual.style.border = "none";
-      visual.innerHTML = `<img src="../Élément/Nuage.svg" alt="nuage" style="width:125px; height:auto;">`;
+      visual.innerHTML = `<img src="graphique/nuage.svg" alt="nuage" style="width:125px; height:auto;">`;
       visual.style.left = this.left + "px";
       visual.style.bottom = this.bottom + "px";
       grid.appendChild(visual);
