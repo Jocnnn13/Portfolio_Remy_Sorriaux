@@ -194,6 +194,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
     gap: 100px;
 }
 
+
 .text-col { grid-column: 2; }
 .text-ball { grid-column: 3; }
 
@@ -347,6 +348,13 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 .project-col[hidden] {
   display: none !important;
 }
+
+.project-card h5 {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 20px;
+  color: #f0f0f0;
+}
  
 /* ===================== FENÊTRE PROJET ===================== */
 .project-modal {
@@ -413,8 +421,8 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   border: 0;
   border-radius: 50%;
   background: #1c1c1c;
@@ -441,8 +449,8 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   position: absolute;
   top: 24px;
   right: 32px;
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   border: 0;
   border-radius: 50%;
   background: #1c1c1c;
