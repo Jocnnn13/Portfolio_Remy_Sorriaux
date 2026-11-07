@@ -247,7 +247,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 }
 
 ::selection {
-  background: rgba(91, 233, 162, 0.9);
+  background: #7d08d7;
   mix-blend-mode: difference;  
   color: #f0f0f0;        
 }
