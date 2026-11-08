@@ -434,7 +434,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   z-index: 2;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
-.pm-arrow:hover { transform: translateY(-50%) scale(1.08); }
+
 .pm-prev { left: 32px; }
 .pm-next { right: 32px; }
 .pm-arrow.is-hidden { opacity: 0; pointer-events: none; }
