@@ -1,9 +1,3 @@
-/* =====================================================================
-   VERSION FLUIDE : aucune media query.
-   Le site s'adapte seul grâce à : flex-wrap, grid auto-fill/minmax,
-   clamp(), min()/max(), dvh et des tailles relatives.
-   ===================================================================== */
- 
 body {
     background-color: #1c1c1c; font-family: 'Inter', sans-serif;
     margin: 0; padding: 0; overflow-x: hidden;
@@ -19,7 +13,7 @@ html, body { -ms-overflow-style: none; scrollbar-width: none; }
 .boom             { z-index: 50; }
 .hero-section, .rand-grid { z-index: 1; }
  
-/* ===================== NAVBAR ===================== */
+/* NAVBAR */
 .nav {
     display: flex; justify-content: space-between; align-items: center;
     flex-wrap: wrap; gap: 8px 16px;
@@ -39,8 +33,7 @@ html, body { -ms-overflow-style: none; scrollbar-width: none; }
 }
 .nav-right > * { margin: 0; padding: 0; display: flex; align-items: center; }
  
-/* Les wrappers ne sont plus "relative" : les bulles se placent par rapport
-   à la barre de nav (toujours dans l'écran, jamais coupées). */
+
 .shop-wrapper { position: static; display: inline-flex; align-items: center; }
 .shop.casino-roll {
     position: relative; display: inline-flex; align-items: center; overflow: hidden; text-decoration: none;
@@ -81,7 +74,7 @@ html, body { -ms-overflow-style: none; scrollbar-width: none; }
 @keyframes fadeDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
  
-/* ===================== HERO "HELLO" ===================== */
+/* HERO */
 .fond-fixe {
     position: relative; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh;
     display: flex; justify-content: center; align-items: center; pointer-events: none; mix-blend-mode: difference; z-index: 1000;
@@ -97,7 +90,7 @@ html, body { -ms-overflow-style: none; scrollbar-width: none; }
  
 .hero-section { position: relative; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; background-color: #1c1c1c; overflow: hidden; }
  
-/* bouton rond "Click here !" */
+
 .boom {
     position: fixed; bottom: clamp(110px, 60dvh, 520px); left: clamp(12px, 2vw, 20px);
     width: clamp(64px, 7vw, 80px); height: clamp(64px, 7vw, 80px);
@@ -107,18 +100,16 @@ html, body { -ms-overflow-style: none; scrollbar-width: none; }
 }
 .boom-text { color: #f0f0f0; font-size: 10px; font-weight: bold; pointer-events: none; }
  
-/* images qui suivent la souris */
+
 .trail { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; overflow: hidden; }
 .trail img { position: absolute; width: clamp(120px, 20vw, 250px); height: auto; border-radius: 8px; transform: translate(-50%, -50%); z-index: 1; animation: popNet 2s forwards; }
  
 @keyframes popNet { 0% { opacity: 1; transform: translate(-50%, -50%) scale(0.8); } 50% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); } }
  
-/* ===================== CURSEUR CUBE ===================== */
+/* CURSEUR CUBE */
 body, a, button, .shop, .contact-wrapper { cursor: none !important; }
  
-/* Le cube est invisible tant qu'une vraie souris n'a pas bougé
-   (la classe "has-mouse" est ajoutée par une ligne de JS, voir explication).
-   Sur téléphone, il n'apparaît donc jamais coincé dans un coin. */
+
 #cursor-cube { position: fixed; top: 0; left: 0; width: 20px; height: 20px; pointer-events: none; z-index: 100000; transform-style: preserve-3d; opacity: 0; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease; }
 body.has-mouse #cursor-cube { opacity: 1; }
 .face { position: absolute; width: 20px; height: 20px; background: rgba(104, 6, 174, 0.9); border: 1px solid #7d08d7; opacity: 0; transition: opacity 0.2s; }
@@ -127,7 +118,7 @@ body.has-mouse #cursor-cube { opacity: 1; }
 .face.top    { transform: rotateX(90deg) translateZ(10px); } .face.bottom { transform: rotateX(-90deg) translateZ(10px); }
 body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); } body.is-3d .face { opacity: 0.8; background: rgba(227, 224, 6, 0.949); }
  
-/* ===================== BOUTON CV ===================== */
+/* BOUTON CV */
 .cv-bloc {
     position: sticky; top: 80vh; top: 80dvh; width: 100%; bottom: 35px; right: 25px;
     display: flex; justify-content: flex-end; align-items: center; pointer-events: none;
@@ -143,7 +134,6 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 }
 .circle-plus:hover { background-color: #1c1c1c; color: #f0f0f0; }
  
-/* la popup se place par rapport à la taille réelle du bouton (100%) */
 .cv-popup {
     position: absolute; bottom: calc(100% - 15px); left: 50%; transform: translateX(-50%); background-color: #f0f0f0;
     padding: 10px 20px; border-radius: 50px; white-space: nowrap; opacity: 0; visibility: hidden;
@@ -153,7 +143,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 .cv-popup a { display: flex; align-items: center; text-decoration: none; color: #1c1c1c; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; }
 .cv-wrapper.is-open .circle-plus { transform: rotate(45deg); background-color: #1c1c1c; color: #f0f0f0; border-color: #f0f0f0; }
  
-/* ===================== FOOTER ===================== */
+/* FOOTER */
 .site-footer {
     min-height: 60px; height: auto; width: 100%; box-sizing: border-box;
     padding: 16px clamp(16px, 3.5vw, 40px); position: relative; margin-top: 0;
@@ -168,7 +158,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 .signature-text { line-height: 1; font-size: 0.9rem; position: relative; top: 1px; }
 .footer-right { display: flex; align-items: center; gap: 25px; }
  
-/* ===================== INTRODUCTION ===================== */
+/* INTRODUCTION */
 .introduction {
     position: relative;
     width: 100%;
@@ -193,13 +183,13 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
     overflow-wrap: break-word;
 }
  
-/* décalage de la première ligne : 25% sur grand écran, disparaît sur petit */
+
 .indent-line {
     display: inline-block;
     margin-left: clamp(0px, calc((100vw - 500px) * 0.38), 25%);
 }
  
-/* --- textes : 2 blocs alignés à droite, passent l'un sous l'autre si pas de place --- */
+
 .improvement-section {
     position: relative;
     width: 100%;
@@ -221,7 +211,6 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 .text-col, .text-ball {
     flex: 1 1 260px;
     min-width: 0;
-    /* grand écran : exactement 1/3 de la largeur ; petit écran : toute la largeur */
     max-width: max(calc((100% - 2 * var(--gap)) / 3), min(100%, 340px));
 }
  
@@ -232,7 +221,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
     line-height: 1.6;
 }
  
-/* ===================== FILTRES ===================== */
+/* FILTRES */
 .container_loop.content-grid {
     position: relative;
     max-width: 100%;
@@ -283,7 +272,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   color: #f0f0f0;
 }
  
-/* ===================== GRILLE DES PROJETS ===================== */
+/* GRILLE DES PROJETS */
 .rand-grid {
   position: relative;
   width: 100%;
@@ -291,9 +280,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   padding: 50px 0 50px;
 }
  
-/* 2 colonnes maximum quand il y a la place (chaque colonne fait au moins la moitié
-   de la largeur), 1 seule colonne sinon. Si une colonne est masquée par un filtre,
-   l'autre garde sa largeur d'origine (auto-fill). */
+
 .project-grid,
 .project-grid.is-filtered {
   width: calc(100% - clamp(32px, 12vw, 200px));
@@ -316,8 +303,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   justify-content: flex-start !important;
   align-items: flex-start;
 }
- 
-/* deux blocs côte à côte si la colonne est assez large, sinon l'un sous l'autre */
+
 .project-pair,
 .project-grid.is-filtered .project-pair {
   display: grid;
@@ -327,7 +313,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   width: 100%;
 }
  
-/* carte projet */
+
 .project-card {
   display: block;
   min-width: 0;
@@ -375,7 +361,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   color: #f0f0f0;
 }
  
-/* ===================== FENÊTRE PROJET ===================== */
+/* FENÊTRE PROJET */
 .project-modal {
   position: fixed;
   inset: 0;
@@ -403,7 +389,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   color: #fff;
 }
  
-/* slides */
+
 .pm-stage { position: relative; width: 100%; }
 .pm-viewport { overflow: hidden; width: 100%; }
 .pm-track {
@@ -427,7 +413,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   object-fit: contain;
 }
  
-/* vidéo Vimeo (iframe) ou fichier vidéo */
+
 .pm-slide .pm-video {
   display: block;
   width: 100%;
@@ -437,7 +423,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   object-fit: contain;
 }
  
-/* flèches */
+
 .pm-arrow {
   position: absolute;
   top: 50%;
@@ -465,7 +451,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   cursor: none !important;
 }
  
-/* bouton fermer */
+
 .pm-close {
   position: absolute;
   top: clamp(12px, 2vw, 24px);
@@ -483,7 +469,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   z-index: 3;
 }
  
-/* ===================== JEU ===================== */
+/* JEU */
 #game-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; pointer-events: none; display: flex; align-items: center; justify-content: center; }
 .portal-door { position: absolute; top: 0; width: 50%; height: 100%; background-color: #f0f0f0; transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1); z-index: 1; }
 .portal-door.left { left: 0; transform: translateX(-100%); } .portal-door.right { right: 0; transform: translateX(100%); }
@@ -497,10 +483,10 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 #splash-screen .btn-launch { padding: 14px 38px; font-size: 16px; font-family: 'Inter', sans-serif; background: none; color: #1c1c1c; border: 1px solid #1c1c1c; border-radius: 50px; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease; }
 #splash-screen .btn-launch:hover { background-color: #1c1c1c; color: #f0f0f0; }
  
-/* le z-index force l'iframe devant les portes blanches ; carré, jamais plus grand que l'écran */
+
 .game-iframe { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(800px, 94vw, calc(90dvh * 8 / 7)); height: min(700px, calc(94vw * 7 / 8), 90dvh); border: none; z-index: 10; }
  
-/* Lenis coupe les clics dans les iframes ; le jeu, lui, doit recevoir le toucher */
+
 .lenis.lenis-smooth iframe.game-iframe { pointer-events: auto; }
 #game-modal { touch-action: none; }
  
@@ -508,7 +494,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 .magnet-wrapper { display: flex; justify-content: center; align-items: center; }
 .magnet-rect { width: min(450px, 80vw); height: auto; transition: transform 0.3s ease; will-change: transform; }
  
-/* ===================== LENIS (défilement fluide) ===================== */
+/* LENIS */
 html.lenis, html.lenis body {
   height: auto;
 }

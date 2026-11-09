@@ -1,4 +1,3 @@
-// ===================== CURSEUR CUBE =====================
 const cursorCube = document.getElementById("cursor-cube");
 document.addEventListener("mousemove", function (e) {
   if (cursorCube) {
@@ -7,12 +6,10 @@ document.addEventListener("mousemove", function (e) {
   }
 });
 
-// le cube n'apparait que si une vraie souris est utilisée (jamais sur téléphone)
 document.addEventListener("pointermove", function (e) {
   if (e.pointerType === "mouse") document.body.classList.add("has-mouse");
 });
 
-// la touche Shift passe le curseur en 3D
 document.addEventListener("keydown", function (e) {
   if (e.key === "Shift") {
     document.body.classList.add("is-3d");
@@ -24,14 +21,12 @@ document.addEventListener("keyup", function (e) {
   }
 });
 
-// empêche les flèches de faire défiler la page (utile pour le jeu)
 window.addEventListener("keydown", function (e) {
   if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)) {
     e.preventDefault();
   }
 });
 
-// ===================== NAVBAR AU SCROLL =====================
 let isScrolling;
 window.addEventListener("scroll", function () {
   const nav = document.querySelector(".nav");
@@ -48,7 +43,6 @@ window.addEventListener("scroll", function () {
   }
 });
 
-// ===================== IMAGES QUI SUIVENT LA SOURIS =====================
 const images = [
   "elements/1.jpg",
   "elements/2.jpg",
@@ -105,7 +99,6 @@ function spawnImage(x, y) {
   }, 2000);
 }
 
-// ===================== BULLES SHOP ET CONTACT =====================
 let shopTimer;
 let emailTimer;
 
@@ -140,7 +133,6 @@ function toggleEmail() {
   }
 }
 
-// copie le mail et affiche une coche pendant 2 secondes
 function copyToClipboard(event, iconId) {
   event.stopPropagation();
   const email = "remysorriauxpro@gmail.com";
@@ -160,7 +152,6 @@ function copyToClipboard(event, iconId) {
   });
 }
 
-// ferme la bulle du mail 3 secondes après avoir quitté la souris
 let timer;
 function startAutoClose() {
   timer = setTimeout(function () {
@@ -172,8 +163,6 @@ function stopAutoClose() {
   clearTimeout(timer);
 }
 
-// ===================== FOOTER =====================
-// le footer apparait quand on arrive en bas de la page
 document.addEventListener("DOMContentLoaded", function () {
   const footer = document.querySelector(".site-footer");
   if (footer) {
@@ -189,8 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// ===================== TITRE "HELLO" =====================
-// chaque lettre se déforme quand la souris s'approche
 document.addEventListener("DOMContentLoaded", () => {
   const title = document.getElementById("pressure-title");
   if (!title) return;
@@ -224,7 +211,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// le titre disparait en scrollant
 const pressureTitle = document.getElementById("pressure-title");
 if (pressureTitle) {
   window.addEventListener("scroll", () => {
@@ -232,7 +218,6 @@ if (pressureTitle) {
   });
 }
 
-// ===================== BOUTON CV =====================
 let cvTimer;
 function toggleCV() {
   const cvWrapper = document.querySelector(".cv-wrapper");
@@ -261,13 +246,10 @@ function stopCVTimer() {
   clearTimeout(cvTimer);
 }
 
-// ===================== JEU =====================
-// le bouton "Click here !" peut être déplacé ; un clic rapide ouvre le jeu
 const el = document.getElementById("boom");
 const modal = document.getElementById("game-modal");
 if (el) {
   let offsetX, offsetY, clickStartTime;
-  // pointer events : fonctionne à la souris ET au doigt
   el.addEventListener("pointerdown", (e) => {
     clickStartTime = Date.now();
     offsetX = e.clientX - el.getBoundingClientRect().left;
@@ -299,7 +281,6 @@ const ecranPretAJouer = document.getElementById("splash-screen");
 const closeBtn = document.getElementById("close-game-btn");
 const gameModal = document.getElementById("game-modal");
 
-// bouton "Play" : on charge le jeu dans l'iframe
 if (btnPlay) {
   btnPlay.addEventListener("click", () => {
     if (ecranPretAJouer) ecranPretAJouer.style.display = "none";
@@ -313,7 +294,6 @@ if (btnPlay) {
   });
 }
 
-// bouton "×" : on ferme le jeu
 if (closeBtn) {
   closeBtn.addEventListener("click", () => {
     if (gameModal) gameModal.classList.remove("active");
@@ -325,12 +305,10 @@ if (closeBtn) {
   });
 }
 
-// le jeu peut demander sa propre fermeture
 window.addEventListener("message", (event) => {
   if (event.data === "closeGameModal" && closeBtn) closeBtn.click();
 });
 
-// l'image du jeu suit légèrement la souris
 const magnet = document.getElementById("magnetRect");
 if (magnet) {
   magnet.addEventListener("mousemove", (e) => {
@@ -347,7 +325,6 @@ if (magnet) {
   });
 }
 
-// ===================== FILTRES DES PROJETS =====================
 document.addEventListener("DOMContentLoaded", () => {
   const categories = document.querySelectorAll(".category-item");
   const grid = document.getElementById("projectGrid");
@@ -361,21 +338,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     grid.classList.toggle("is-filtered", !showAll);
 
-    // 1. on filtre les cartes
     cards.forEach((card) => {
       const cats = (card.dataset.category || "").split(" ");
       const hideInAll = card.hasAttribute("data-hide-in-all");
       card.hidden = showAll ? hideInAll : !cats.includes(filter);
     });
 
-    // 2. on cache les paires dont les deux cartes sont cachées
     pairs.forEach((pair) => {
       const cardsInPair = pair.querySelectorAll(".project-card");
       const allHidden = Array.from(cardsInPair).every((c) => c.hidden);
       pair.hidden = allHidden;
     });
 
-    // 3. on cache les colonnes vides
     cols.forEach((col) => {
       const visibleItems = col.querySelectorAll(
         ".project-card:not([hidden]), .project-pair:not([hidden])",
@@ -398,7 +372,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 });
 
-// ===================== FENÊTRE PROJET (diaporama) =====================
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("projectGrid");
   const projectModal = document.getElementById("projectModal");
@@ -421,7 +394,6 @@ document.addEventListener("DOMContentLoaded", () => {
     nextBtn.classList.toggle("is-hidden", current === total - 1);
   }
 
-  // transforme un lien Vimeo en lien d'intégration
   function vimeoEmbedUrl(url) {
     const m = url.match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/([a-zA-Z0-9]+))?/);
     if (!m) return null;
@@ -449,7 +421,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return `https://sketchfab.com/models/${m[1]}/embed?${params}`;
   }
 
-  // crée une slide : vidéo Vimeo, modèle 3D, fichier vidéo ou image
   function buildSlide(src, label) {
     const slide = document.createElement("div");
     slide.className = "pm-slide";
@@ -482,7 +453,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return slide;
   }
 
-  // arrête la vidéo d'une slide quand on la quitte
   function stopSlide(index) {
     const slide = track.children[index];
     if (!slide) return;
@@ -492,7 +462,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (video) video.pause();
   }
 
-  // lance la vidéo de la slide affichée
   function activateSlide(index) {
     const slide = track.children[index];
     if (!slide) return;
@@ -519,7 +488,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const title = card.querySelector("h3")?.textContent.trim() || "";
     const clicked = card.querySelector("img")?.getAttribute("src");
 
-    // images supplémentaires, séparées par "|" dans data-slides
     const extra = card.dataset.slides
       ? card.dataset.slides
           .split("|")
@@ -555,7 +523,6 @@ document.addEventListener("DOMContentLoaded", () => {
     projectModal.classList.remove("is-open");
     projectModal.setAttribute("aria-hidden", "true");
 
-    // on vide le diaporama après l'animation de fermeture
     setTimeout(() => {
       if (!projectModal.classList.contains("is-open")) track.innerHTML = "";
     }, 350);
@@ -563,7 +530,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (lastFocus) lastFocus.focus();
   }
 
-  // clic sur une carte
   grid.addEventListener("click", (e) => {
     const card = e.target.closest(".project-card");
     if (!card) return;
@@ -575,12 +541,10 @@ document.addEventListener("DOMContentLoaded", () => {
   nextBtn.addEventListener("click", () => go(current + 1));
   closeProjectBtn.addEventListener("click", closeProject);
 
-  // clic sur le fond sombre
   projectModal.addEventListener("click", (e) => {
     if (e.target === projectModal) closeProject();
   });
 
-  // clavier : Échap, flèches gauche / droite
   document.addEventListener("keydown", (e) => {
     if (!projectModal.classList.contains("is-open")) return;
     if (e.key === "Escape") closeProject();
