@@ -7,6 +7,11 @@ document.addEventListener("mousemove", function (e) {
   }
 });
 
+// le cube n'apparait que si une vraie souris est utilisée (jamais sur téléphone)
+document.addEventListener("pointermove", function (e) {
+  if (e.pointerType === "mouse") document.body.classList.add("has-mouse");
+});
+
 // la touche Shift passe le curseur en 3D
 document.addEventListener("keydown", function (e) {
   if (e.key === "Shift") {
@@ -262,22 +267,26 @@ const el = document.getElementById("boom");
 const modal = document.getElementById("game-modal");
 if (el) {
   let offsetX, offsetY, clickStartTime;
-  el.addEventListener("mousedown", (e) => {
+  // pointer events : fonctionne à la souris ET au doigt
+  el.addEventListener("pointerdown", (e) => {
     clickStartTime = Date.now();
     offsetX = e.clientX - el.getBoundingClientRect().left;
     offsetY = e.clientY - el.getBoundingClientRect().top;
-    window.addEventListener("mousemove", mousemove);
-    window.addEventListener("mouseup", mouseup);
+    el.setPointerCapture(e.pointerId);
+    el.addEventListener("pointermove", pointermove);
+    el.addEventListener("pointerup", pointerup);
+    el.addEventListener("pointercancel", pointerup);
   });
-  function mousemove(e) {
+  function pointermove(e) {
     el.style.left = e.clientX - offsetX + "px";
     el.style.top = e.clientY - offsetY + "px";
     el.style.bottom = "auto";
     el.style.right = "auto";
   }
-  function mouseup() {
-    window.removeEventListener("mousemove", mousemove);
-    window.removeEventListener("mouseup", mouseup);
+  function pointerup() {
+    el.removeEventListener("pointermove", pointermove);
+    el.removeEventListener("pointerup", pointerup);
+    el.removeEventListener("pointercancel", pointerup);
     if (Date.now() - clickStartTime < 200 && modal) {
       modal.classList.add("active");
     }
