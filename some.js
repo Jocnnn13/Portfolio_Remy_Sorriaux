@@ -250,6 +250,7 @@ const el = document.getElementById("boom");
 const modal = document.getElementById("game-modal");
 if (el) {
   let offsetX, offsetY, clickStartTime;
+  // pointer events : fonctionne à la souris ET au doigt
   el.addEventListener("pointerdown", (e) => {
     clickStartTime = Date.now();
     offsetX = e.clientX - el.getBoundingClientRect().left;
@@ -309,6 +310,16 @@ window.addEventListener("message", (event) => {
   if (event.data === "closeGameModal" && closeBtn) closeBtn.click();
 });
 
+window.addEventListener("message", (event) => {
+  const data = event.data;
+  if (!data || data.type !== "mouseMove" || !cursorCube || !iframeJeu) return;
+  if (event.source !== iframeJeu.contentWindow) return;
+  const rect = iframeJeu.getBoundingClientRect();
+  document.body.classList.add("has-mouse");
+  cursorCube.style.left = rect.left + data.x - 10 + "px";
+  cursorCube.style.top = rect.top + data.y - 10 + "px";
+});
+
 const magnet = document.getElementById("magnetRect");
 if (magnet) {
   magnet.addEventListener("mousemove", (e) => {
@@ -338,6 +349,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     grid.classList.toggle("is-filtered", !showAll);
 
+    // 1. on filtre les cartes
     cards.forEach((card) => {
       const cats = (card.dataset.category || "").split(" ");
       const hideInAll = card.hasAttribute("data-hide-in-all");
