@@ -32,26 +32,12 @@ html, body { -ms-overflow-style: none; scrollbar-width: none; }
     gap: 8px clamp(8px, 2vw, 10px); color: #f0f0f0; height: 100%; margin: 0;
 }
 .nav-right > * { margin: 0; padding: 0; display: flex; align-items: center; }
-.nav-right button { font: inherit; border: 0; background: none; }
  
 
 .shop-wrapper { position: static; display: inline-flex; align-items: center; }
 .shop.casino-roll {
     position: relative; display: inline-flex; align-items: center; overflow: hidden; text-decoration: none;
     height: 1.2em; line-height: 1.2em; cursor: pointer; color: #f0f0f0;
-}
-.shop.casino-roll:focus-visible,
-.contact-wrapper:focus-visible,
-.circle-plus:focus-visible,
-.category-item:focus-visible,
-.pm-close:focus-visible,
-.pm-arrow:focus-visible,
-.btn-launch:focus-visible,
-#close-game-btn:focus-visible,
-.icon-social:focus-visible,
-.project-card:focus-visible {
-    outline: 2px solid #7d08d7;
-    outline-offset: 4px;
 }
 .shop.casino-roll span { display: block; transition: transform 0.3s cubic-bezier(0.5, 0, 0, 1); }
 .shop.casino-roll::after {
@@ -262,27 +248,21 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
  
 .container_loop.content-grid p { white-space: nowrap; }
  
-.container_loop.content-grid > .category-item {
+.container_loop.content-grid > div {
   cursor: pointer;
   opacity: 0.5;
-  border: 0;
-  border-bottom: 2px solid transparent;
-  background: none;
-  color: inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  padding: 0;
 }
  
 
-.container_loop.content-grid > .category-item.active {
+.container_loop.content-grid > div.active {
   opacity: 1;
   border-bottom: 2px solid #f0f0f0;
   color: #f0f0f0;
+  line-height: 0;
   font-style: italic;
 }
  
-.container_loop.content-grid > .category-item:hover {
+.container_loop.content-grid > div:hover {
   opacity: 0.8;
   font-style: italic;
 }
@@ -535,25 +515,4 @@ html.lenis, html.lenis body {
  
 .lenis.lenis-smooth iframe {
   pointer-events: none;
-}
-
-@media (hover: none), (pointer: coarse) {
-  body, a, button, .shop, .contact-wrapper,
-  .project-modal, .project-modal * {
-    cursor: auto !important;
-  }
-  #cursor-cube {
-    display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
 }
