@@ -4,7 +4,7 @@ body {
 }
 html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
 html, body { -ms-overflow-style: none; scrollbar-width: none; }
- 
+
 /* Z-INDEX */
 #game-modal       { z-index: 9999; }
 .cv-bloc          { z-index: 9000; }
@@ -12,7 +12,7 @@ html, body { -ms-overflow-style: none; scrollbar-width: none; }
 .site-footer      { z-index: 50; }
 .boom             { z-index: 50; }
 .hero-section, .rand-grid { z-index: 1; }
- 
+
 
 .nav {
     display: flex; justify-content: space-between; align-items: center;
@@ -26,32 +26,18 @@ html, body { -ms-overflow-style: none; scrollbar-width: none; }
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 }
 .nav h1 { position: relative; font-size: 16px; font-weight: 500; color: #f0f0f0; margin: 0; cursor: pointer; }
- 
+
 .nav-right {
     display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap;
     gap: 8px clamp(8px, 2vw, 10px); color: #f0f0f0; height: 100%; margin: 0;
 }
 .nav-right > * { margin: 0; padding: 0; display: flex; align-items: center; }
-.nav-right button { font: inherit; border: 0; background: none; }
- 
+
 
 .shop-wrapper { position: static; display: inline-flex; align-items: center; }
 .shop.casino-roll {
     position: relative; display: inline-flex; align-items: center; overflow: hidden; text-decoration: none;
     height: 1.2em; line-height: 1.2em; cursor: pointer; color: #f0f0f0;
-}
-.shop.casino-roll:focus-visible,
-.contact-wrapper:focus-visible,
-.circle-plus:focus-visible,
-.category-item:focus-visible,
-.pm-close:focus-visible,
-.pm-arrow:focus-visible,
-.btn-launch:focus-visible,
-#close-game-btn:focus-visible,
-.icon-social:focus-visible,
-.project-card:focus-visible {
-    outline: 2px solid #7d08d7;
-    outline-offset: 4px;
 }
 .shop.casino-roll span { display: block; transition: transform 0.3s cubic-bezier(0.5, 0, 0, 1); }
 .shop.casino-roll::after {
@@ -60,7 +46,7 @@ html, body { -ms-overflow-style: none; scrollbar-width: none; }
 }
 .shop.casino-roll:hover span { transform: translateY(-100%); }
 .shop.casino-roll:hover::after { transform: translateY(-100%); }
- 
+
 .Shop-box {
     display: none; position: absolute; top: calc(100% + 4px); right: clamp(14px, 3vw, 20px);
     max-width: calc(100vw - 28px); box-sizing: border-box;
@@ -68,7 +54,7 @@ html, body { -ms-overflow-style: none; scrollbar-width: none; }
     padding: 12px 18px; font-size: 14px; color: #1c1c1c; white-space: normal; cursor: pointer;
 }
 .Shop-box.visible { display: flex; align-items: center; gap: 10px; animation: fadeDown 0.2s ease-out; }
- 
+
 .contact-wrapper { position: static; display: inline-flex; align-items: center; cursor: pointer; color: #f0f0f0; user-select: none; }
 .arrow { display: inline-block; transition: transform 0.3s ease; margin-left: 5px; }
 .email-box {
@@ -80,20 +66,20 @@ html, body { -ms-overflow-style: none; scrollbar-width: none; }
 .email-box.visible { display: flex; align-items: center; gap: 10px; animation: fadeDown 0.2s ease-out; }
 .contact-wrapper:hover .arrow { transform: rotate(90deg); }
 .copy-icon { display: flex; align-items: center; flex-shrink: 0; color: #1c1c1c; transition: color 0.2s; }
- 
+
 .icon-social { display: flex; align-items: center; text-decoration: none; cursor: pointer; }
 .icon-social img { width: 18px; height: 18px; display: block; object-fit: contain; }
 .icon-social img[src*="Fichier 78"] { transform: scale(1.3); }
- 
+
 @keyframes fadeDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
- 
+
 
 .fond-fixe {
     position: relative; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh;
     display: flex; justify-content: center; align-items: center; pointer-events: none; mix-blend-mode: difference; z-index: 1000;
 }
- 
+
 #pressure-title {
     font-family: 'Inter', sans-serif; font-size: 22vw; font-weight: 300;
     color: #f0f0f0; text-transform: uppercase; line-height: 1; width: 100%;
@@ -101,9 +87,9 @@ html, body { -ms-overflow-style: none; scrollbar-width: none; }
     align-items: center; opacity: 1; animation: fadeInUp 3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 #pressure-title span { display: inline-block; transition: transform 0.1s linear, font-weight 0.1s linear; transform-origin: center bottom; margin: 0 -1vw; }
- 
+
 .hero-section { position: relative; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; background-color: #1c1c1c; overflow: hidden; }
- 
+
 
 .boom {
     position: fixed; bottom: clamp(110px, 60dvh, 520px); left: clamp(12px, 2vw, 20px);
@@ -113,16 +99,16 @@ html, body { -ms-overflow-style: none; scrollbar-width: none; }
     touch-action: none; /* permet de déplacer le bouton au doigt sans faire défiler la page */
 }
 .boom-text { color: #f0f0f0; font-size: 10px; font-weight: bold; pointer-events: none; }
- 
+
 
 .trail { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; overflow: hidden; }
 .trail img { position: absolute; width: clamp(120px, 20vw, 250px); height: auto; border-radius: 8px; transform: translate(-50%, -50%); z-index: 1; animation: popNet 2s forwards; }
- 
+
 @keyframes popNet { 0% { opacity: 1; transform: translate(-50%, -50%) scale(0.8); } 50% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); } }
- 
+
 
 body, a, button, .shop, .contact-wrapper { cursor: none !important; }
- 
+
 
 #cursor-cube { position: fixed; top: 0; left: 0; width: 20px; height: 20px; pointer-events: none; z-index: 100000; transform-style: preserve-3d; opacity: 0; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease; }
 body.has-mouse #cursor-cube { opacity: 1; }
@@ -131,7 +117,7 @@ body.has-mouse #cursor-cube { opacity: 1; }
 .face.right  { transform: rotateY(90deg) translateZ(10px); } .face.left   { transform: rotateY(-90deg) translateZ(10px); }
 .face.top    { transform: rotateX(90deg) translateZ(10px); } .face.bottom { transform: rotateX(-90deg) translateZ(10px); }
 body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); } body.is-3d .face { opacity: 0.8; background: rgba(227, 224, 6, 0.949); }
- 
+
 
 .cv-bloc {
     position: sticky; top: 80vh; top: 80dvh; width: 100%; bottom: 35px; right: 25px;
@@ -147,7 +133,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
     backdrop-filter: blur(5px); transition: all 0.3s ease;
 }
 .circle-plus:hover { background-color: #1c1c1c; color: #f0f0f0; }
- 
+
 
 .cv-popup {
     position: absolute; bottom: calc(100% - 15px); left: 50%; transform: translateX(-50%); background-color: #f0f0f0;
@@ -157,7 +143,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 .cv-popup.active { opacity: 1; visibility: visible; bottom: calc(100% + 15px); }
 .cv-popup a { display: flex; align-items: center; text-decoration: none; color: #1c1c1c; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; }
 .cv-wrapper.is-open .circle-plus { transform: rotate(45deg); background-color: #1c1c1c; color: #f0f0f0; border-color: #f0f0f0; }
- 
+
 
 .site-footer {
     min-height: 60px; height: auto; width: 100%; box-sizing: border-box;
@@ -172,7 +158,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 .signature-logo { height: 25px; width: auto; display: block; }
 .signature-text { line-height: 1; font-size: 0.9rem; position: relative; top: 1px; }
 .footer-right { display: flex; align-items: center; gap: 25px; }
- 
+
 
 .introduction {
     position: relative;
@@ -187,7 +173,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
     color: #f0f0f0;
     font-family: 'Inter', sans-serif;
 }
- 
+
 .introduction .main-title {
     max-width: fit-content;
     width: 100%;
@@ -197,13 +183,13 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
     font-style: italic;
     overflow-wrap: break-word;
 }
- 
+
 
 .indent-line {
     display: inline-block;
     margin-left: clamp(0px, calc((100vw - 500px) * 0.38), 25%);
 }
- 
+
 
 .improvement-section {
     position: relative;
@@ -213,7 +199,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
     color: #f0f0f0;
     font-family: 'Inter', sans-serif;
 }
- 
+
 .improvement-section.content-grid {
     --gap: clamp(28px, 7.8vw, 100px);
     display: flex;
@@ -222,20 +208,20 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
     gap: var(--gap);
     padding: clamp(36px, 5vw, 50px) clamp(20px, 4vw, 50px) 0;
 }
- 
+
 .text-col, .text-ball {
     flex: 1 1 260px;
     min-width: 0;
     max-width: max(calc((100% - 2 * var(--gap)) / 3), min(100%, 340px));
 }
- 
+
 .text-col p, .text-ball p {
     margin: 0;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.6;
 }
- 
+
 
 .container_loop.content-grid {
     position: relative;
@@ -259,40 +245,34 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
     font-family: 'Inter', sans-serif;
     font-weight: 800;
 }
- 
+
 .container_loop.content-grid p { white-space: nowrap; }
- 
-.container_loop.content-grid > .category-item {
+
+.container_loop.content-grid > div {
   cursor: pointer;
   opacity: 0.5;
-  border: 0;
-  border-bottom: 2px solid transparent;
-  background: none;
-  color: inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  padding: 0;
 }
- 
 
-.container_loop.content-grid > .category-item.active {
+
+.container_loop.content-grid > div.active {
   opacity: 1;
   border-bottom: 2px solid #f0f0f0;
   color: #f0f0f0;
+  line-height: 0;
   font-style: italic;
 }
- 
-.container_loop.content-grid > .category-item:hover {
+
+.container_loop.content-grid > div:hover {
   opacity: 0.8;
   font-style: italic;
 }
- 
+
 ::selection {
   background: #7d08d7;
   mix-blend-mode: difference;
   color: #f0f0f0;
 }
- 
+
 
 .rand-grid {
   position: relative;
@@ -300,7 +280,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   background-color: #1c1c1c;
   padding: 50px 0 50px;
 }
- 
+
 
 .project-grid,
 .project-grid.is-filtered {
@@ -312,9 +292,9 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   gap: clamp(32px, 4.4vw, 56px) clamp(16px, 2vw, 25px);
   align-items: start;
 }
- 
+
 .project-grid.is-filtered { grid-auto-flow: row dense; }
- 
+
 .project-col,
 .project-grid.is-filtered .project-col {
   display: flex;
@@ -324,7 +304,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   justify-content: flex-start !important;
   align-items: flex-start;
 }
- 
+
 
 .project-pair,
 .project-grid.is-filtered .project-pair {
@@ -334,7 +314,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   align-items: start;
   width: 100%;
 }
- 
+
 
 .project-card {
   display: block;
@@ -344,7 +324,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   cursor: pointer;
 }
 .project-card[hidden] { display: none; }
- 
+
 .project-card figure {
   margin: 0;
   background: #1c1c1c;
@@ -358,7 +338,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   transition: transform 0.5s ease;
 }
 .project-card:hover img { transform: scale(1.03); }
- 
+
 .project-card h3 {
   font-size: clamp(16px, 1.1vw, 21px);
   font-weight: 400;
@@ -369,20 +349,20 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   color: #7d7d7d;
   margin-top: 4px;
 }
- 
+
 .project-card[hidden],
 .project-pair[hidden],
 .project-col[hidden] {
   display: none !important;
 }
- 
+
 .project-card h5 {
   font-size: 14px;
   font-style: italic;
   margin-top: 20px;
   color: #f0f0f0;
 }
- 
+
 
 .project-modal {
   position: fixed;
@@ -400,7 +380,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   opacity: 1;
   visibility: visible;
 }
- 
+
 .pm-dialog {
   width: 100%;
   height: 100vh;
@@ -410,7 +390,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   justify-content: center;
   color: #fff;
 }
- 
+
 /* slides */
 .pm-stage { position: relative; width: 100%; }
 .pm-viewport { overflow: hidden; width: 100%; }
@@ -434,7 +414,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   height: 100%;
   object-fit: contain;
 }
- 
+
 
 .pm-slide .pm-video {
   display: block;
@@ -444,7 +424,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   background: #000;
   object-fit: contain;
 }
- 
+
 
 .pm-arrow {
   position: absolute;
@@ -463,16 +443,16 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   z-index: 2;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
- 
+
 .pm-prev { left: clamp(8px, 2.5vw, 32px); }
 .pm-next { right: clamp(8px, 2.5vw, 32px); }
 .pm-arrow.is-hidden { opacity: 0; pointer-events: none; }
- 
+
 .project-modal,
 .project-modal * {
   cursor: none !important;
 }
- 
+
 
 .pm-close {
   position: absolute;
@@ -490,7 +470,7 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
   cursor: pointer;
   z-index: 3;
 }
- 
+
 
 #game-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; pointer-events: none; display: flex; align-items: center; justify-content: center; }
 .portal-door { position: absolute; top: 0; width: 50%; height: 100%; background-color: #f0f0f0; transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1); z-index: 1; }
@@ -504,39 +484,58 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 #game-modal.active #close-game-btn { opacity: 1; }
 #splash-screen .btn-launch { padding: 14px 38px; font-size: 16px; font-family: 'Inter', sans-serif; background: none; color: #1c1c1c; border: 1px solid #1c1c1c; border-radius: 50px; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease; }
 #splash-screen .btn-launch:hover { background-color: #1c1c1c; color: #f0f0f0; }
- 
+
 
 .game-iframe { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(800px, 100vw); height: 100vh; height: 100dvh; border: none; z-index: 10; }
- 
+
 
 .lenis.lenis-smooth iframe.game-iframe { pointer-events: auto; }
 #game-modal { touch-action: none; }
- 
+
 .play-section { display: flex; flex-direction: column; align-items: center; }
 .magnet-wrapper { display: flex; justify-content: center; align-items: center; }
 .magnet-rect { width: min(450px, 80vw, max(120px, calc(100dvh - 220px))); height: auto; transition: transform 0.3s ease; will-change: transform; }
- 
+
 
 html.lenis, html.lenis body {
   height: auto;
 }
- 
+
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
- 
+
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
- 
+
 .lenis.lenis-stopped {
   overflow: hidden;
 }
- 
+
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
 
+
+/* ===== Ajouts invisibles (accessibilité / tactile) ===== */
+
+/* Contour violet quand on navigue au clavier (Tab) */
+.shop.casino-roll:focus-visible,
+.contact-wrapper:focus-visible,
+.circle-plus:focus-visible,
+.category-item:focus-visible,
+.pm-close:focus-visible,
+.pm-arrow:focus-visible,
+.btn-launch:focus-visible,
+#close-game-btn:focus-visible,
+.icon-social:focus-visible,
+.project-card:focus-visible {
+    outline: 2px solid #7d08d7;
+    outline-offset: 4px;
+}
+
+/* Sur écran tactile : curseur normal et pas de cube */
 @media (hover: none), (pointer: coarse) {
   body, a, button, .shop, .contact-wrapper,
   .project-modal, .project-modal * {
@@ -544,16 +543,5 @@ html.lenis, html.lenis body {
   }
   #cursor-cube {
     display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }
