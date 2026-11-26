@@ -105,10 +105,19 @@ let emailTimer;
 function toggleShop() {
   const shopBox = document.getElementById("ShopBox");
   const emailBox = document.getElementById("emailBox");
+  const shopButton = document.querySelector(".shop.casino-roll");
+  const emailButton = document.querySelector(".contact-wrapper");
   if (emailBox) emailBox.classList.remove("visible");
+  if (emailButton) emailButton.setAttribute("aria-expanded", "false");
   clearTimeout(emailTimer);
   if (shopBox) {
     shopBox.classList.toggle("visible");
+    if (shopButton) {
+      shopButton.setAttribute(
+        "aria-expanded",
+        shopBox.classList.contains("visible") ? "true" : "false",
+      );
+    }
     if (shopBox.classList.contains("visible")) {
       clearTimeout(shopTimer);
       shopTimer = setTimeout(() => shopBox.classList.remove("visible"), 3000);
@@ -119,10 +128,19 @@ function toggleShop() {
 function toggleEmail() {
   const shopBox = document.getElementById("ShopBox");
   const emailBox = document.getElementById("emailBox");
+  const shopButton = document.querySelector(".shop.casino-roll");
+  const emailButton = document.querySelector(".contact-wrapper");
   if (shopBox) shopBox.classList.remove("visible");
+  if (shopButton) shopButton.setAttribute("aria-expanded", "false");
   clearTimeout(shopTimer);
   if (emailBox) {
     emailBox.classList.toggle("visible");
+    if (emailButton) {
+      emailButton.setAttribute(
+        "aria-expanded",
+        emailBox.classList.contains("visible") ? "true" : "false",
+      );
+    }
     if (emailBox.classList.contains("visible")) {
       clearTimeout(emailTimer);
       emailTimer = setTimeout(
@@ -151,6 +169,17 @@ function copyToClipboard(event, iconId) {
     }, 2000);
   });
 }
+
+document.addEventListener("keydown", (event) => {
+  if (
+    (event.key !== "Enter" && event.key !== " ") ||
+    event.target !== document.getElementById("emailText")?.parentElement
+  ) {
+    return;
+  }
+  event.preventDefault();
+  copyToClipboard(event, "copyIcon");
+});
 
 let timer;
 function startAutoClose() {
@@ -222,17 +251,26 @@ let cvTimer;
 function toggleCV() {
   const cvWrapper = document.querySelector(".cv-wrapper");
   const cvBox = document.getElementById("cvBox");
+  const cvButton = document.querySelector(".circle-plus");
   if (cvBox && cvWrapper) {
     cvBox.classList.toggle("active");
     cvWrapper.classList.toggle("is-open");
+    if (cvButton) {
+      cvButton.setAttribute(
+        "aria-expanded",
+        cvBox.classList.contains("active") ? "true" : "false",
+      );
+    }
     if (!cvBox.classList.contains("active")) closeCVVisuals();
   }
 }
 function closeCVVisuals() {
   const cvBox = document.getElementById("cvBox");
   const cvWrapper = document.querySelector(".cv-wrapper");
+  const cvButton = document.querySelector(".circle-plus");
   if (cvBox) cvBox.classList.remove("active");
   if (cvWrapper) cvWrapper.classList.remove("is-open");
+  if (cvButton) cvButton.setAttribute("aria-expanded", "false");
 }
 function startCVTimer() {
   const cvBox = document.getElementById("cvBox");
@@ -249,10 +287,13 @@ function stopCVTimer() {
 const el = document.getElementById("boom");
 const modal = document.getElementById("game-modal");
 if (el) {
-  let offsetX, offsetY, clickStartTime;
+  let offsetX, offsetY, clickStartTime, startX, startY, moved;
   // pointer events : fonctionne à la souris ET au doigt
   el.addEventListener("pointerdown", (e) => {
     clickStartTime = Date.now();
+    startX = e.clientX;
+    startY = e.clientY;
+    moved = false;
     offsetX = e.clientX - el.getBoundingClientRect().left;
     offsetY = e.clientY - el.getBoundingClientRect().top;
     el.setPointerCapture(e.pointerId);
@@ -261,6 +302,7 @@ if (el) {
     el.addEventListener("pointercancel", pointerup);
   });
   function pointermove(e) {
+    if (Math.hypot(e.clientX - startX, e.clientY - startY) > 8) moved = true;
     el.style.left = e.clientX - offsetX + "px";
     el.style.top = e.clientY - offsetY + "px";
     el.style.bottom = "auto";
@@ -270,8 +312,9 @@ if (el) {
     el.removeEventListener("pointermove", pointermove);
     el.removeEventListener("pointerup", pointerup);
     el.removeEventListener("pointercancel", pointerup);
-    if (Date.now() - clickStartTime < 200 && modal) {
+    if (!moved && Date.now() - clickStartTime < 300 && modal) {
       modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
     }
   }
 }
@@ -298,6 +341,7 @@ if (btnPlay) {
 if (closeBtn) {
   closeBtn.addEventListener("click", () => {
     if (gameModal) gameModal.classList.remove("active");
+    if (gameModal) gameModal.setAttribute("aria-hidden", "true");
     if (iframeJeu) {
       iframeJeu.src = "";
       iframeJeu.style.display = "none";
@@ -305,6 +349,12 @@ if (closeBtn) {
     if (ecranPretAJouer) ecranPretAJouer.style.display = "flex";
   });
 }
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && gameModal?.classList.contains("active")) {
+    closeBtn?.click();
+  }
+});
 
 window.addEventListener("message", (event) => {
   if (event.data === "closeGameModal" && closeBtn) closeBtn.click();
@@ -372,8 +422,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   categories.forEach((category) => {
     category.addEventListener("click", () => {
-      categories.forEach((item) => item.classList.remove("active"));
+      categories.forEach((item) => {
+        item.classList.remove("active");
+        item.setAttribute("aria-pressed", "false");
+      });
       category.classList.add("active");
+      category.setAttribute("aria-pressed", "true");
       applyFilter(category.getAttribute("data-filter"));
     });
   });
@@ -534,6 +588,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeProject() {
     projectModal.classList.remove("is-open");
     projectModal.setAttribute("aria-hidden", "true");
+    for (let i = 0; i < total; i++) stopSlide(i);
 
     setTimeout(() => {
       if (!projectModal.classList.contains("is-open")) track.innerHTML = "";
