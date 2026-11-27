@@ -263,7 +263,6 @@ body.is-3d #cursor-cube { transform: rotateX(-30deg) rotateY(45deg) scale(1.5); 
 }
 
 .container_loop.content-grid > div:hover {
-  opacity: 0.8;
   font-style: italic;
 }
 
